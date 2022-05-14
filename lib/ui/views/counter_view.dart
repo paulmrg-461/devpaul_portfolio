@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_devpaul/ui/shared/custom_text_button.dart';
 
 class CounterView extends StatefulWidget {
-  const CounterView({Key? key}) : super(key: key);
+  final String initialValue;
+  const CounterView({Key? key, required this.initialValue}) : super(key: key);
 
   @override
   State<CounterView> createState() => _CounterViewState();
@@ -10,6 +11,14 @@ class CounterView extends StatefulWidget {
 
 class _CounterViewState extends State<CounterView> {
   int counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    if (int.tryParse(widget.initialValue) != null) {
+      counter = int.parse(widget.initialValue);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -4,12 +4,14 @@ import 'package:portfolio_devpaul/ui/shared/custom_text_button.dart';
 import 'package:provider/provider.dart';
 
 class CounterProviderView extends StatelessWidget {
-  const CounterProviderView({Key? key}) : super(key: key);
+  final String initialValue;
+  const CounterProviderView({Key? key, required this.initialValue})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (_) => CounterProvider(),
+        create: (_) => CounterProvider(initialValue),
         child: const _CounterProviderPageBody());
   }
 }
