@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_devpaul/locator.dart';
+import 'package:portfolio_devpaul/router/router.dart';
 import 'package:portfolio_devpaul/services/navigation_service.dart';
-import 'package:portfolio_devpaul/router/router_generator.dart';
 import 'package:portfolio_devpaul/ui/layout/main_layout_page.dart';
 
 void main() {
   setupLocator();
+  Flurorouter.configureRoutes();
   runApp(const MyApp());
 }
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/home',
-      onGenerateRoute: RouterGenerator.generateRoute,
+      onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: locator<NavigationService>().navigatorKey,
       builder: (context, child) => MainLayoutPage(
           content: child ?? const CircularProgressIndicator.adaptive()),
