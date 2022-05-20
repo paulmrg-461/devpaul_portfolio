@@ -1,100 +1,110 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_devpaul/services/navigation_service.dart';
-import 'package:portfolio_devpaul/ui/shared/custom_flat_button.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_devpaul/providers/page_provider.dart';
+import 'package:portfolio_devpaul/ui/shared/custom_menu_item.dart';
+import 'package:provider/provider.dart';
 
-import '../../locator.dart';
-
-class CustomAppMenu extends StatelessWidget {
+class CustomAppMenu extends StatefulWidget {
   const CustomAppMenu({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (_, constraints) =>
-            (constraints.maxWidth > 520) ? _TableDesktopMenu() : _MobileMenu());
-  }
+  State<CustomAppMenu> createState() => _CustomAppMenuState();
 }
 
-class _TableDesktopMenu extends StatelessWidget {
+class _CustomAppMenuState extends State<CustomAppMenu>
+    with SingleTickerProviderStateMixin {
+  bool isOpen = false;
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 200));
+  }
+
   @override
   Widget build(BuildContext context) {
-    print('Appbar creado');
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      width: double.infinity,
-      child: Row(
-        children: [
-          CustomFlatButton(
-            text: 'Contador Stateful',
-            // onPressed: () => Navigator.pushNamed(context, '/stateful'),
-            onPressed: () =>
-                locator<NavigationService>().navigateTo('/stateful'),
-            color: Colors.black,
-          ),
-          const SizedBox(width: 10),
-          CustomFlatButton(
-            text: 'Contador Provider',
-            onPressed: () =>
-                locator<NavigationService>().navigateTo('/provider'),
-            color: Colors.black,
-          ),
-          const SizedBox(width: 10),
-          CustomFlatButton(
-            text: 'Otra página',
-            onPressed: () => locator<NavigationService>().navigateTo('/abc123'),
-            color: Colors.black,
-          ),
-          const SizedBox(width: 10),
-          CustomFlatButton(
-            text: 'Counter params',
-            onPressed: () =>
-                locator<NavigationService>().navigateTo('/stateful/100'),
-            color: Colors.black,
-          ),
-          const SizedBox(width: 10),
-          CustomFlatButton(
-            text: 'Provider params',
-            onPressed: () =>
-                locator<NavigationService>().navigateTo('/provider?q=200'),
-            color: Colors.black,
-          ),
-        ],
+    final PageProvider pageProvider =
+        Provider.of<PageProvider>(context, listen: false);
+    return InkWell(
+      mouseCursor: SystemMouseCursors.click,
+      onTap: () => setState(() {
+        isOpen ? controller.reverse() : controller.forward();
+        isOpen = !isOpen;
+      }),
+      child: Container(
+        width: 160,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        color: Colors.black,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _MenuTitle(isOpen: isOpen, controller: controller),
+            if (isOpen) ...[
+              CustomMenuItem(
+                  delay: 0,
+                  icon: Icons.home_outlined,
+                  text: 'Home',
+                  onPressed: () => pageProvider.goTo(0)),
+              CustomMenuItem(
+                  delay: 100,
+                  icon: Icons.info_outline,
+                  text: 'About',
+                  onPressed: () => pageProvider.goTo(1)),
+              CustomMenuItem(
+                  delay: 200,
+                  icon: Icons.monetization_on_outlined,
+                  text: 'Pricing',
+                  onPressed: () => pageProvider.goTo(2)),
+              CustomMenuItem(
+                  delay: 300,
+                  icon: Icons.handshake_outlined,
+                  text: 'Contact',
+                  onPressed: () => pageProvider.goTo(3)),
+              CustomMenuItem(
+                  delay: 400,
+                  icon: Icons.location_on_outlined,
+                  text: 'Location',
+                  onPressed: () => pageProvider.goTo(4))
+            ],
+          ],
+        ),
       ),
     );
   }
 }
 
-class _MobileMenu extends StatelessWidget {
+class _MenuTitle extends StatelessWidget {
+  const _MenuTitle({
+    Key? key,
+    required this.isOpen,
+    required this.controller,
+  }) : super(key: key);
+
+  final bool isOpen;
+  final AnimationController controller;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      width: double.infinity,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomFlatButton(
-            text: 'Contador Stateful',
-            // onPressed: () => Navigator.pushNamed(context, '/stateful'),
-            onPressed: () =>
-                locator<NavigationService>().navigateTo('/stateful'),
-            color: Colors.black,
-          ),
-          const SizedBox(width: 10),
-          CustomFlatButton(
-            text: 'Contador Provider',
-            onPressed: () =>
-                locator<NavigationService>().navigateTo('/provider'),
-            color: Colors.black,
-          ),
-          const SizedBox(width: 10),
-          CustomFlatButton(
-            text: 'Otra página',
-            onPressed: () => locator<NavigationService>().navigateTo('/abc123'),
-            color: Colors.black,
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInOut,
+          width: isOpen ? 40 : 0,
+        ),
+        Text(
+          'Menu',
+          style: GoogleFonts.roboto(color: Colors.white, fontSize: 18),
+        ),
+        const Spacer(),
+        AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: controller,
+          color: Colors.white,
+        ),
+      ],
     );
   }
 }
