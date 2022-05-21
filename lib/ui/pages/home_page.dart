@@ -41,10 +41,10 @@ class _HomeBody extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       controller: pageProvider.scrollController,
       children: const [
-        LocationView(),
         HomeView(),
         AboutView(),
         ContactView(),
+        LocationView(),
         FooterView(),
       ],
     );

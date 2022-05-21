@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_devpaul/ui/shared/dev_paul_horizontal_logo.dart';
@@ -16,7 +17,7 @@ class LocationView extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(
-                'Location',
+                AppLocalizations.of(context)!.home_page_menu_home,
                 style: GoogleFonts.montserratAlternates(
                     fontSize: 80, fontWeight: FontWeight.bold),
               ),
@@ -243,14 +244,11 @@ class LocationView extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
-                              FittedBox(
-                                fit: BoxFit.contain,
-                                child: Text(
-                                  'co.devpaul@gmail.com',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    color: const Color(0xff9EA7AD),
-                                  ),
+                              Text(
+                                'co.devpaul@gmail.com',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  color: const Color(0xff9EA7AD),
                                 ),
                               ),
                             ],
@@ -286,14 +284,11 @@ class LocationView extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
-                              FittedBox(
-                                fit: BoxFit.contain,
-                                child: Text(
-                                  'Popayán Cauca Colombia\nCll 22N #7-29 - B/Ciudad Jardín',
-                                  style: GoogleFonts.inter(
-                                    fontSize: 16,
-                                    color: const Color(0xff9EA7AD),
-                                  ),
+                              Text(
+                                'Popayán Cauca Colombia\nCll 22N #7-29 - B/Ciudad Jardín',
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  color: const Color(0xff9EA7AD),
                                 ),
                               ),
                             ],
