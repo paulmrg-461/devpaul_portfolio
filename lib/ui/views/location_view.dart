@@ -89,8 +89,8 @@ class LocationView extends StatelessWidget {
                             height: MediaQuery.of(context).size.width * 0.0285,
                           ),
                           SvgPicture.asset(
-                            'assets/logos/instagram.svg',
-                            semanticsLabel: 'Instagram Logo',
+                            'assets/logos/github.svg',
+                            semanticsLabel: 'Github Logo',
                             width: MediaQuery.of(context).size.width * 0.0285,
                             height: MediaQuery.of(context).size.width * 0.0285,
                           ),
@@ -146,14 +146,14 @@ class LocationView extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Java',
+                            'Python',
                             style: GoogleFonts.inter(
                               fontSize: 16,
                               color: const Color(0xff9EA7AD),
                             ),
                           ),
                           Text(
-                            'Python',
+                            'Firebase',
                             style: GoogleFonts.inter(
                               fontSize: 16,
                               color: const Color(0xff9EA7AD),

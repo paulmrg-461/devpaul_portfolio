@@ -2,5 +2,11 @@
     "home_page_menu_home": "Home",
     "home_page_menu_about": "About",
     "home_page_menu_contact": "Contact",
-    "home_page_menu_location": "Location"
+    "home_page_menu_location": "Location",
+    "home_page_resume": "Resume",
+    "home_page_title_1": "Hi, I am",
+    "home_page_title_2": "Paul Realpe",
+    "home_page_title_3": "Software Developer",
+    "home_page_explore_button": "Explore now",
+    "home_page_whatsapp_button": "WhatsApp"
 }

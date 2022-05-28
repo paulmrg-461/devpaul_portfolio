@@ -44,27 +44,27 @@ class _CustomAppMenuState extends State<CustomAppMenu>
             if (isOpen) ...[
               CustomMenuItem(
                   delay: 0,
-                  icon: Icons.home_outlined,
+                  // icon: Icons.home_outlined,
                   text: 'Home',
                   onPressed: () => pageProvider.goTo(0)),
               CustomMenuItem(
                   delay: 100,
-                  icon: Icons.info_outline,
+                  // icon: Icons.info_outline,
                   text: 'About',
                   onPressed: () => pageProvider.goTo(1)),
               CustomMenuItem(
                   delay: 200,
-                  icon: Icons.monetization_on_outlined,
+                  // icon: Icons.monetization_on_outlined,
                   text: 'Pricing',
                   onPressed: () => pageProvider.goTo(2)),
               CustomMenuItem(
                   delay: 300,
-                  icon: Icons.handshake_outlined,
+                  // icon: Icons.handshake_outlined,
                   text: 'Contact',
                   onPressed: () => pageProvider.goTo(3)),
               CustomMenuItem(
                   delay: 400,
-                  icon: Icons.location_on_outlined,
+                  // icon: Icons.location_on_outlined,
                   text: 'Location',
                   onPressed: () => pageProvider.goTo(4))
             ],

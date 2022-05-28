@@ -89,6 +89,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Resume`
+  String get home_page_resume {
+    return Intl.message(
+      'Resume',
+      name: 'home_page_resume',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hi, I am`
+  String get home_page_title_1 {
+    return Intl.message(
+      'Hi, I am',
+      name: 'home_page_title_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Paul Realpe`
+  String get home_page_title_2 {
+    return Intl.message(
+      'Paul Realpe',
+      name: 'home_page_title_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Software Developer`
+  String get home_page_title_3 {
+    return Intl.message(
+      'Software Developer',
+      name: 'home_page_title_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore now`
+  String get home_page_explore_button {
+    return Intl.message(
+      'Explore now',
+      name: 'home_page_explore_button',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WhatsApp`
+  String get home_page_whatsapp_button {
+    return Intl.message(
+      'WhatsApp',
+      name: 'home_page_whatsapp_button',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

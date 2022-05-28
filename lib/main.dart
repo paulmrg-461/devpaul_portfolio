@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:portfolio_devpaul/helpers/custom_scroll_behavior.dart';
 import 'package:portfolio_devpaul/providers/page_provider.dart';
 import 'package:portfolio_devpaul/router/router.dart';
 import 'package:portfolio_devpaul/ui/pages/home_page.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         home: const HomePage(),
         initialRoute: 'home',
         onGenerateRoute: Flurorouter.router.generator,
+        scrollBehavior: CustomScrollBehavior(),
         localizationsDelegates: const [
           AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
