@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_devpaul/ui/shared/dev_paul_horizontal_logo.dart';
+import 'package:portfolio_devpaul/ui/shared/location_map.dart';
 
 class LocationView extends StatelessWidget {
   const LocationView({Key? key}) : super(key: key);
@@ -12,18 +13,41 @@ class LocationView extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-                AppLocalizations.of(context)!.home_page_menu_home,
-                style: GoogleFonts.montserratAlternates(
-                    fontSize: 80, fontWeight: FontWeight.bold),
+          Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            margin: const EdgeInsets.only(top: 10, bottom: 6),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.04,
+                  vertical: MediaQuery.of(context).size.height * 0.03),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.home_page_menu_location,
+                    style: GoogleFonts.inter(
+                        color: const Color(0xff232835),
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  Text(
+                    """Laborum ipsum pariatur fugiat occaecat quis est et non occaecat sit. Aliqua laboris velit labore ut irure. Ex nostrud ad aliqua enim anim est.""",
+                    style: GoogleFonts.inter(
+                        color: const Color(0xff7B7E86),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w200),
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
               ),
             ),
           ),
-          const Spacer(),
+          Expanded(child: getMap()),
           Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 0.35,

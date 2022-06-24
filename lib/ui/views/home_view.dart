@@ -50,7 +50,7 @@ class HomeView extends StatelessWidget {
                                       0.0285),
                               width: MediaQuery.of(context).size.width * 0.2,
                               child: const DevPaulHorizontalLogo()),
-                          Spacer(),
+                          const Spacer(),
                           Container(
                             margin: EdgeInsets.only(
                                 left: MediaQuery.of(context).size.width * 0.06),

@@ -149,6 +149,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Who I am?`
+  String get about_page_who_i_am {
+    return Intl.message(
+      'Who I am?',
+      name: 'about_page_who_i_am',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What I do?`
+  String get about_page_what_i_do {
+    return Intl.message(
+      'What I do?',
+      name: 'about_page_what_i_do',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Team colaborators`
+  String get contact_page_team_colaborators {
+    return Intl.message(
+      'Team colaborators',
+      name: 'contact_page_team_colaborators',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's work together`
+  String get contact_page_work_together {
+    return Intl.message(
+      'Let\'s work together',
+      name: 'contact_page_work_together',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
