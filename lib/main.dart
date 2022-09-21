@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'Home',
+        title: 'DevPaul',
         home: const HomePage(),
         initialRoute: 'home',
         onGenerateRoute: Flurorouter.router.generator,

@@ -8,6 +8,7 @@ import 'package:portfolio_devpaul/ui/shared/custom_button.dart';
 import 'package:portfolio_devpaul/ui/shared/custom_menu_item.dart';
 import 'package:portfolio_devpaul/ui/shared/dev_paul_horizontal_logo.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -85,10 +86,11 @@ class HomeView extends StatelessWidget {
                                   height: 16,
                                 ),
                                 Text(
-                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.",
+                                  AppLocalizations.of(context)!
+                                      .home_page_professional_profile,
                                   style: GoogleFonts.inter(
                                       color: const Color(0xffA6A6A6),
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.w100),
                                 ),
                                 const SizedBox(
@@ -105,7 +107,7 @@ class HomeView extends StatelessWidget {
                                         buttonElevation: 10,
                                         internalVerticalPadding: 12,
                                         internalHorizontalPadding: 14,
-                                        onPressed: () => print('Hola Amiguis')),
+                                        onPressed: () => pageProvider.goTo(1)),
                                     const SizedBox(
                                       width: 18,
                                     ),
@@ -117,7 +119,14 @@ class HomeView extends StatelessWidget {
                                         internalVerticalPadding: 9,
                                         internalHorizontalPadding: 8,
                                         icon: Icons.whatsapp,
-                                        onPressed: () => print('Hola Amiguis')),
+                                        onPressed: () async {
+                                          final Uri _url = Uri.parse(
+                                              "https://web.whatsapp.com/send?phone=+573148580454&text=Hola");
+                                          ;
+                                          if (!await launchUrl(_url)) {
+                                            throw 'Could not launch $_url';
+                                          }
+                                        }),
                                   ],
                                 )
                               ],
@@ -128,14 +137,50 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.22,
+                      height: MediaQuery.of(context).size.width * 0.22,
+                      margin: EdgeInsets.only(
+                          right: MediaQuery.of(context).size.width * 0.035),
+                      decoration: BoxDecoration(
+                          color: const Color(0xff443357),
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: const Color(0xff443357).withOpacity(0.5),
+                              offset: const Offset(
+                                10.0,
+                                10.0,
+                              ),
+                              blurRadius: 20.0,
+                              spreadRadius: 2.0,
+                            ), //BoxShadow
+                            const BoxShadow(
+                              color: Colors.white,
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 0.0,
+                              spreadRadius: 0.0,
+                            ), //BoxShadow
+                          ],
+                          border: Border.all(color: Colors.white, width: 8),
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/images/paul.jpg'))),
+                    ),
                     Column(
                       children: [
                         CustomButton(
-                            text:
-                                AppLocalizations.of(context)!.home_page_resume,
-                            backgroundColor: Colors.transparent,
-                            borderColor: Colors.white,
-                            onPressed: () => print('Hola Amiguis'))
+                          text: AppLocalizations.of(context)!.home_page_resume,
+                          backgroundColor: Colors.transparent,
+                          borderColor: Colors.white,
+                          onPressed: () async {
+                            final Uri _url = Uri.parse(
+                                'https://drive.google.com/file/d/1jAPgDvxwXu2IE-Gcje66cQ8SGfgz1lmf/view?usp=sharing');
+                            if (!await launchUrl(_url)) {
+                              throw 'Could not launch $_url';
+                            }
+                          },
+                        )
                       ],
                     ),
                   ],
@@ -193,29 +238,62 @@ class HomeView extends StatelessWidget {
                 children: [
                   AnimatedAssetImage(
                       path: 'flutter',
-                      onPressed: () => print('Hola flutter'),
+                      onPressed: () async {
+                        final Uri _url = Uri.parse('https://flutter.dev/');
+                        if (!await launchUrl(_url)) {
+                          throw 'Could not launch $_url';
+                        }
+                      },
                       delay: 100),
                   AnimatedAssetImage(
                       path: 'react',
-                      onPressed: () => print('Hola flutter'),
+                      onPressed: () async {
+                        final Uri _url = Uri.parse('https://es.reactjs.org/');
+                        if (!await launchUrl(_url)) {
+                          throw 'Could not launch $_url';
+                        }
+                      },
                       delay: 300),
                   AnimatedAssetImage(
                       path: 'kotlin',
-                      onPressed: () => print('Hola flutter'),
+                      onPressed: () async {
+                        final Uri _url =
+                            Uri.parse('https://developer.android.com/kotlin/');
+                        if (!await launchUrl(_url)) {
+                          throw 'Could not launch $_url';
+                        }
+                      },
                       delay: 600),
                   AnimatedAssetImage(
                       path: 'swift',
-                      onPressed: () => print('Hola flutter'),
+                      onPressed: () async {
+                        final Uri _url =
+                            Uri.parse('https://www.apple.com/co/swift/');
+                        if (!await launchUrl(_url)) {
+                          throw 'Could not launch $_url';
+                        }
+                      },
                       delay: 900),
                   AnimatedAssetImage(
                     path: 'python',
-                    onPressed: () => print('Hola flutter'),
+                    onPressed: () async {
+                      final Uri _url = Uri.parse('https://www.python.org/');
+                      if (!await launchUrl(_url)) {
+                        throw 'Could not launch $_url';
+                      }
+                    },
                     delay: 1200,
                     paddingTop: 8,
                   ),
                   AnimatedAssetImage(
                       path: 'firebase',
-                      onPressed: () => print('Hola flutter'),
+                      onPressed: () async {
+                        final Uri _url =
+                            Uri.parse('https://firebase.google.com/');
+                        if (!await launchUrl(_url)) {
+                          throw 'Could not launch $_url';
+                        }
+                      },
                       delay: 1500),
                 ],
               ),

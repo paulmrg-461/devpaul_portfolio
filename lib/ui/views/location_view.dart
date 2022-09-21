@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_devpaul/providers/page_provider.dart';
+import 'package:portfolio_devpaul/ui/shared/custom_icon_url.dart';
+import 'package:portfolio_devpaul/ui/shared/custom_menu_item_footer.dart';
 import 'package:portfolio_devpaul/ui/shared/dev_paul_horizontal_logo.dart';
 import 'package:portfolio_devpaul/ui/shared/location_map.dart';
+import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LocationView extends StatelessWidget {
   const LocationView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final PageProvider pageProvider = Provider.of<PageProvider>(context);
     return Container(
       color: Colors.white,
       child: Column(
@@ -94,27 +100,55 @@ class LocationView extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          SvgPicture.asset(
-                            'assets/logos/facebook.svg',
-                            semanticsLabel: 'Facebook Logo',
+                          CustomIconUrl(
+                            path: 'assets/logos/facebook.svg',
+                            onPressed: () async {
+                              final Uri _url = Uri.parse(
+                                  'https://www.facebook.com/devpaul.co/');
+                              if (!await launchUrl(_url)) {
+                                throw 'Could not launch $_url';
+                              }
+                            },
+                            label: 'Facebook Logo',
                             width: MediaQuery.of(context).size.width * 0.0285,
                             height: MediaQuery.of(context).size.width * 0.0285,
                           ),
-                          SvgPicture.asset(
-                            'assets/logos/twitter.svg',
-                            semanticsLabel: 'Twitter Logo',
+                          CustomIconUrl(
+                            path: 'assets/logos/twitter.svg',
+                            onPressed: () async {
+                              final Uri _url =
+                                  Uri.parse('https://twitter.com/devpaul_co');
+                              if (!await launchUrl(_url)) {
+                                throw 'Could not launch $_url';
+                              }
+                            },
+                            label: 'Twitter Logo',
                             width: MediaQuery.of(context).size.width * 0.0285,
                             height: MediaQuery.of(context).size.width * 0.0285,
                           ),
-                          SvgPicture.asset(
-                            'assets/logos/linkedin.svg',
-                            semanticsLabel: 'LinkedIn Logo',
+                          CustomIconUrl(
+                            path: 'assets/logos/linkedin.svg',
+                            onPressed: () async {
+                              final Uri _url = Uri.parse(
+                                  'https://www.linkedin.com/in/paul-mauricio-realpe-guerrero-631b17a6/');
+                              if (!await launchUrl(_url)) {
+                                throw 'Could not launch $_url';
+                              }
+                            },
+                            label: 'LinkedIn Logo',
                             width: MediaQuery.of(context).size.width * 0.0285,
                             height: MediaQuery.of(context).size.width * 0.0285,
                           ),
-                          SvgPicture.asset(
-                            'assets/logos/github.svg',
-                            semanticsLabel: 'Github Logo',
+                          CustomIconUrl(
+                            path: 'assets/logos/github.svg',
+                            onPressed: () async {
+                              final Uri _url =
+                                  Uri.parse('https://github.com/paulmrg-461');
+                              if (!await launchUrl(_url)) {
+                                throw 'Could not launch $_url';
+                              }
+                            },
+                            label: 'Github Logo',
                             width: MediaQuery.of(context).size.width * 0.0285,
                             height: MediaQuery.of(context).size.width * 0.0285,
                           ),
@@ -141,48 +175,60 @@ class LocationView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Flutter',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'React',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'Kotlin',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'Swift',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'Python',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'Firebase',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
+                          CustomMenuItemFooter(
+                              text: 'Flutter',
+                              onPressed: () async {
+                                final Uri _url =
+                                    Uri.parse('https://flutter.dev/');
+                                if (!await launchUrl(_url)) {
+                                  throw 'Could not launch $_url';
+                                }
+                              }),
+                          CustomMenuItemFooter(
+                              text: 'React',
+                              onPressed: () async {
+                                final Uri _url =
+                                    Uri.parse('https://es.reactjs.org/');
+                                if (!await launchUrl(_url)) {
+                                  throw 'Could not launch $_url';
+                                }
+                              }),
+                          CustomMenuItemFooter(
+                              text: 'Kotlin',
+                              onPressed: () async {
+                                final Uri _url = Uri.parse(
+                                    'https://developer.android.com/kotlin/');
+                                if (!await launchUrl(_url)) {
+                                  throw 'Could not launch $_url';
+                                }
+                              }),
+                          CustomMenuItemFooter(
+                              text: 'Swift',
+                              onPressed: () async {
+                                final Uri _url = Uri.parse(
+                                    'https://www.apple.com/co/swift/');
+                                if (!await launchUrl(_url)) {
+                                  throw 'Could not launch $_url';
+                                }
+                              }),
+                          CustomMenuItemFooter(
+                              text: 'Python',
+                              onPressed: () async {
+                                final Uri _url =
+                                    Uri.parse('https://www.python.org/');
+                                if (!await launchUrl(_url)) {
+                                  throw 'Could not launch $_url';
+                                }
+                              }),
+                          CustomMenuItemFooter(
+                              text: 'Firebase',
+                              onPressed: () async {
+                                final Uri _url =
+                                    Uri.parse('https://firebase.google.com/');
+                                if (!await launchUrl(_url)) {
+                                  throw 'Could not launch $_url';
+                                }
+                              }),
                         ],
                       ),
                     ),
@@ -206,34 +252,18 @@ class LocationView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Home',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'About',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'Contact',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
-                          Text(
-                            'Location',
-                            style: GoogleFonts.inter(
-                              fontSize: 16,
-                              color: const Color(0xff9EA7AD),
-                            ),
-                          ),
+                          CustomMenuItemFooter(
+                              text: 'Home',
+                              onPressed: () => pageProvider.goTo(0)),
+                          CustomMenuItemFooter(
+                              text: 'About',
+                              onPressed: () => pageProvider.goTo(1)),
+                          CustomMenuItemFooter(
+                              text: 'Contact',
+                              onPressed: () => pageProvider.goTo(2)),
+                          CustomMenuItemFooter(
+                              text: 'Location',
+                              onPressed: () => pageProvider.goTo(3)),
                         ],
                       ),
                     ),
@@ -268,13 +298,15 @@ class LocationView extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
-                              Text(
-                                'co.devpaul@gmail.com',
-                                style: GoogleFonts.inter(
-                                  fontSize: 16,
-                                  color: const Color(0xff9EA7AD),
-                                ),
-                              ),
+                              CustomMenuItemFooter(
+                                  text: 'co.devpaul@gmail.com',
+                                  onPressed: () async {
+                                    final Uri _url = Uri.parse(
+                                        'mailto:co.devpaul@gmail.com?subject=Contacto&body=Hola Paul, estoy interesado en...');
+                                    if (!await launchUrl(_url)) {
+                                      throw 'Could not launch $_url';
+                                    }
+                                  })
                             ],
                           ),
                           Row(
@@ -288,13 +320,16 @@ class LocationView extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
-                              Text(
-                                '+(57) 3148580454',
-                                style: GoogleFonts.inter(
-                                  fontSize: 16,
-                                  color: const Color(0xff9EA7AD),
-                                ),
-                              ),
+                              CustomMenuItemFooter(
+                                  text: '+(57) 3148580454',
+                                  onPressed: () async {
+                                    final Uri _url = Uri.parse(
+                                        "https://web.whatsapp.com/send?phone=+573148580454&text=Hola");
+                                    ;
+                                    if (!await launchUrl(_url)) {
+                                      throw 'Could not launch $_url';
+                                    }
+                                  })
                             ],
                           ),
                           Row(
@@ -308,13 +343,17 @@ class LocationView extends StatelessWidget {
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.01,
                               ),
-                              Text(
-                                'Popayán Cauca Colombia\nCll 22N #7-29 - B/Ciudad Jardín',
-                                style: GoogleFonts.inter(
-                                  fontSize: 16,
-                                  color: const Color(0xff9EA7AD),
-                                ),
-                              ),
+                              CustomMenuItemFooter(
+                                  text:
+                                      'Popayán Cauca Colombia\nCll 22N #7-29 - B/Ciudad Jardín',
+                                  onPressed: () async {
+                                    final Uri _url = Uri.parse(
+                                        "https://www.google.com/maps/place/DevPaul/@2.4554602,-76.5940771,15z/data=!4m5!3m4!1s0x0:0x5dfe0cc97107e505!8m2!3d2.4554602!4d-76.5940771");
+                                    ;
+                                    if (!await launchUrl(_url)) {
+                                      throw 'Could not launch $_url';
+                                    }
+                                  })
                             ],
                           ),
                         ],

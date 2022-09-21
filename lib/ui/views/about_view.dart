@@ -30,11 +30,13 @@ class AboutView extends StatelessWidget {
                 children: [
                   FadeInLeft(
                     child: Container(
-                      width: 320,
-                      height: 320,
+                      width: MediaQuery.of(context).size.width * 0.25,
+                      height: MediaQuery.of(context).size.height * 0.3,
                       // width: MediaQuery.of(context).size.width * 0.25,
                       // height: MediaQuery.of(context).size.width * 0.25,
                       decoration: BoxDecoration(
+                          border: Border.all(
+                              color: const Color(0xff443357), width: 4),
                           boxShadow: [
                             BoxShadow(
                               color: const Color(0xff443357).withOpacity(0.3),
@@ -52,10 +54,10 @@ class AboutView extends StatelessWidget {
                               spreadRadius: 0.0,
                             ), //BoxShadow
                           ],
-                          borderRadius: BorderRadius.circular(500),
+                          borderRadius: BorderRadius.circular(16),
                           image: const DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage('assets/images/devpaul.jpg'))),
+                              image: AssetImage('assets/images/paul2.jpg'))),
                     ),
                   ),
                   SizedBox(
